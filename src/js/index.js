@@ -1,7 +1,7 @@
 const Http = new XMLHttpRequest();
 const url = 'http://www.splashbase.co/api/v1/images/search?query=tree';
 
-let gallery;
+let imageList;
 
 Http.open('GET', url);
 
@@ -18,17 +18,19 @@ Http.onreadystatechange = function loadImages() {
   console.log(`${this.readyState} ${this.status}`);
   if (this.readyState === 4 && this.status === 200) {
     const imagesDataArr = JSON.parse(this.responseText).images;
-    imagesDataArr.forEach((imageData) => {
-      const newImage = new Image();
-      newImage.src = imageData.url;
+    for (let i = 0; i < 10; i += 1) {
+      const listItem = document.createElement('LI');
       const newFigure = document.createElement('FIGURE');
+      const newImage = new Image();
+      newImage.src = imagesDataArr[i].url;
       newFigure.appendChild(newImage);
-      gallery.appendChild(newFigure);
-    });
+      listItem.appendChild(newFigure);
+      imageList.appendChild(listItem);
+    }
   }
 };
 
 window.onload = () => {
-  gallery = document.getElementById('gallery');
+  imageList = document.getElementById('images');
   Http.send();
 };
