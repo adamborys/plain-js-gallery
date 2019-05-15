@@ -67,7 +67,7 @@ window.onload = () => {
 Http.open('GET', url);
 
 Http.onerror = (e) => {
-  alert(`Wystąpił błąd zapytania: ${e.target.status}`);
+  alert(`Request error: ${e.target.status}`);
 };
 Http.onreadystatechange = function loadImages() {
   if (this.readyState === 4 && this.status === 200) {
