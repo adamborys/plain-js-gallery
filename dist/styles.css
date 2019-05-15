@@ -49,6 +49,7 @@ body {
   object-fit: cover; }
 
 .more-btn {
+  display: inline;
   height: 2.5em;
   width: 19em;
   background: #074F57;
@@ -92,7 +93,7 @@ body {
   font-size: 0.75em; }
 
 .loader {
-  display: none;
+  display: inline-block;
   position: fixed;
   left: 0;
   right: 0;

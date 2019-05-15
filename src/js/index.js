@@ -40,9 +40,11 @@ function loadMore() {
     }
     gallery.appendChild(imageList);
   }
+  if (chosenImgDataArr.length === 0) loadMoreBtn.style.display = 'none';
 }
 
 function chooseSite() {
+  loadMoreBtn.style.display = 'inline';
   this.className = 'checked-btn';
   for (let i = 0, len = btnPanel.children.length; i < len; i += 1) {
     if (btnPanel.children[i].id !== this.id) btnPanel.children[i].className = 'unchecked-btn';

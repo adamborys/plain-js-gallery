@@ -61,6 +61,7 @@ body {
 }
 
 .more-btn {
+  display: inline;
   height: 2.5em;
   width: 19em;
   background: #074F57;
@@ -108,7 +109,7 @@ body {
 
 // LOADER
 .loader {
-  display: none; //inline-block;
+  display: inline-block;
   position: fixed;
   left: 0;
   right: 0;
