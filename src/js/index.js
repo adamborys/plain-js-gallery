@@ -21,11 +21,11 @@ function incrementLoaderCounter() {
 }
 
 function loadMore() {
-  loader.style.display = 'inline-block';
   counter = 0;
   const nextArr = chosenImgDataArr.splice(0, 10);
   loadedImgCount = nextArr.length;
   if (loadedImgCount > 0) {
+    loader.style.display = 'inline-block';
     const imageList = document.createElement('UL');
     imageList.className = 'gallery__images';
     for (let i = 0; i < loadedImgCount; i += 1) {

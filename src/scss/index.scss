@@ -9,12 +9,11 @@ body {
   text-align: center;
 }
 
-// main.gallery {
-//   padding: 2vw;
-// }
-
 .gallery > h1 {
   font-size: 3em;
+  @include mobile {  
+    font-size: 2.75em;
+  }
   font-family: 'Montserrat';
   font-weight: 100;
   margin-bottom: 0.2em;
@@ -31,8 +30,8 @@ body {
   grid-template-columns: repeat(4, 14em);
   grid-auto-rows: 14em;
   @include mobile { 
-    grid-template-columns: repeat(2, 14em);
-    grid-auto-rows: 14em;
+    grid-template-columns: repeat(2, 10em);
+    grid-auto-rows: 10em;
   }
   grid-gap: 1.5em;
   grid-auto-flow: dense;
@@ -69,11 +68,14 @@ body {
   color: #FFFFFF;
   font-family: 'Montserrat';
   font-size: 1.5em;
+  @include mobile { 
+    font-size: 1.08em;
+  }
   margin-bottom: 2em;
 }
 
 #btn-panel {
-  margin: 0em 5em;
+  margin: 0em 1em;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

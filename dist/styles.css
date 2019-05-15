@@ -12,6 +12,9 @@ body {
   margin-bottom: 0.2em;
   color: #0C0C0C;
   text-align: center; }
+  @media (max-width: 1100px) {
+    .gallery > h1 {
+      font-size: 2.75em; } }
 
 .gallery > .gallery__images {
   display: grid;
@@ -25,8 +28,8 @@ body {
   list-style: none; }
   @media (max-width: 1100px) {
     .gallery > .gallery__images {
-      grid-template-columns: repeat(2, 14em);
-      grid-auto-rows: 14em; } }
+      grid-template-columns: repeat(2, 10em);
+      grid-auto-rows: 10em; } }
 
 .gallery > .gallery__images > li:nth-child(5), .gallery > .gallery__images > li:nth-child(9) {
   grid-column: span 2; }
@@ -54,9 +57,12 @@ body {
   font-family: 'Montserrat';
   font-size: 1.5em;
   margin-bottom: 2em; }
+  @media (max-width: 1100px) {
+    .more-btn {
+      font-size: 1.08em; } }
 
 #btn-panel {
-  margin: 0em 5em;
+  margin: 0em 1em;
   display: flex;
   flex-flow: row wrap;
   justify-content: center; }
