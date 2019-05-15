@@ -20,14 +20,14 @@ body {
   margin: 1.5em auto;
   justify-content: center;
   grid-template-columns: repeat(4, 14em);
-  grid-template-rows: repeat(3, 14em);
+  grid-auto-rows: 14em;
   grid-gap: 1.5em;
   grid-auto-flow: dense;
   list-style: none; }
   @media (max-width: 1100px) {
     .gallery > .gallery__images {
       grid-template-columns: repeat(2, 14em);
-      grid-template-rows: repeat(9, 14em); } }
+      grid-auto-rows: 14em; } }
 
 .gallery > .gallery__images > li:nth-child(5), .gallery > .gallery__images > li:nth-child(9) {
   grid-column: span 2; }
