@@ -4,12 +4,13 @@ const url = 'http://www.splashbase.co/api/v1/images/search?query=tree';
 let gallery;
 let loadMoreBtn;
 let btnPanel;
-let imagesDataArr;
-let chosenImagesDataArr;
+let imgDataArr;
+let chosenImgDataArr;
 const sitesArr = [];
 
 function loadMore() {
-  const nextArr = chosenImagesDataArr.splice(0, 10);
+  console.log(chosenImgDataArr);
+  const nextArr = chosenImgDataArr.splice(0, 10);
   const len = nextArr.length;
   if (len > 0) {
     const imageList = document.createElement('UL');
@@ -28,7 +29,17 @@ function loadMore() {
 }
 
 function chooseSite() {
-  console.log(this.id);
+  this.className = 'checked-btn';
+  for (let i = 0, len = btnPanel.children.length; i < len; i += 1) {
+    if (btnPanel.children[i].id !== this.id) btnPanel.children[i].className = 'unchecked-btn';
+  }
+  if (this.id > 0) {
+    chosenImgDataArr = imgDataArr.filter(imageData => imageData.site === sitesArr[this.id - 1]);
+  } else chosenImgDataArr = [...imgDataArr];
+  while (gallery.children[2]) {
+    gallery.removeChild(gallery.children[2]);
+  }
+  loadMore();
 }
 
 window.onload = () => {
@@ -45,11 +56,11 @@ Http.onerror = (e) => {
 };
 Http.onreadystatechange = function loadImages() {
   if (this.readyState === 4 && this.status === 200) {
-    imagesDataArr = JSON.parse(this.responseText).images;
-    imagesDataArr.forEach((imageData) => {
+    imgDataArr = JSON.parse(this.responseText).images;
+    imgDataArr.forEach((imageData) => {
       if (sitesArr.indexOf(imageData.site) === -1) sitesArr.push(imageData.site);
     });
-    chosenImagesDataArr = imagesDataArr;
+    chosenImgDataArr = [...imgDataArr];
 
     const showAllBtn = document.createElement('BUTTON');
     showAllBtn.textContent = 'show all';
