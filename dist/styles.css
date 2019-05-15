@@ -49,7 +49,7 @@ body {
   object-fit: cover; }
 
 .more-btn {
-  display: inline;
+  display: none;
   height: 2.5em;
   width: 19em;
   background: #074F57;
