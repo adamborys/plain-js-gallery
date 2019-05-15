@@ -4,21 +4,35 @@ const url = 'http://www.splashbase.co/api/v1/images/search?query=tree';
 let gallery;
 let loadMoreBtn;
 let btnPanel;
+
+let loader;
+let counter;
+let loadedImgCount;
+
 let imgDataArr;
 let chosenImgDataArr;
 const sitesArr = [];
 
+function incrementLoaderCounter() {
+  counter += 1;
+  if (counter === loadedImgCount) {
+    loader.style.display = 'none';
+  }
+}
+
 function loadMore() {
-  console.log(chosenImgDataArr);
+  loader.style.display = 'inline-block';
+  counter = 0;
   const nextArr = chosenImgDataArr.splice(0, 10);
-  const len = nextArr.length;
-  if (len > 0) {
+  loadedImgCount = nextArr.length;
+  if (loadedImgCount > 0) {
     const imageList = document.createElement('UL');
     imageList.className = 'gallery__images';
-    for (let i = 0; i < len; i += 1) {
+    for (let i = 0; i < loadedImgCount; i += 1) {
       const listItem = document.createElement('LI');
       const newFigure = document.createElement('FIGURE');
       const newImage = new Image();
+      newImage.addEventListener('load', incrementLoaderCounter, false);
       newImage.src = nextArr[i].url;
       newFigure.appendChild(newImage);
       listItem.appendChild(newFigure);
@@ -46,6 +60,7 @@ window.onload = () => {
   gallery = document.getElementById('gallery');
   loadMoreBtn = document.getElementById('more-btn');
   btnPanel = document.getElementById('btn-panel');
+  loader = document.getElementById('loader');
   Http.send();
 };
 
@@ -77,7 +92,6 @@ Http.onreadystatechange = function loadImages() {
       siteBtn.onclick = chooseSite;
       btnPanel.appendChild(siteBtn);
     }
-    console.log(sitesArr);
     loadMoreBtn.onclick = loadMore;
     loadMore();
   }
